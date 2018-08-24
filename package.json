@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mcidl/didactic/issues"
   },
-  "homepage": "https://github.com/mcidl/didactic#readme"
+  "homepage": "https://github.com/mcidl/didactic#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
