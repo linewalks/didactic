@@ -36,5 +36,8 @@ module.exports = {
       }
     ]
   },
-  externals: nodeModules
+  externals: nodeModules,
+  node: {
+    __dirname: false
+  }
 }
