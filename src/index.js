@@ -1,19 +1,10 @@
 const express = require("express")
-const program = require("commander")
-const fs = require("fs")
+const { router, port } = require("./router")
 
 module.exports = {
   runServer: () => {
     const app = express()
-    program
-      .version("0.0.1")
-      .option("-p, --port <n>", "Specify port")
-      .parse(process.argv)
-    app.get("/", function(req, res) {
-      res.send("Hello World")
-    })
-    app.listen(program.port, () =>
-      console.log(`didactic running on port ${program.port}!`)
-    )
+    app.use(router)
+    app.listen(port, () => console.log(`didactic running on port ${port}!`))
   }
 }
