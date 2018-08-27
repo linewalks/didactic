@@ -34,7 +34,7 @@ router.get("/contracts_meta", (req, res) => {
   res.send(parseNameAndABIFromCompiledContract(listOfContracts))
 })
 
-router.get("/networkInformation", (req, res) => {
+router.get("/network_information", (req, res) => {
   res.send(config)
 })
 

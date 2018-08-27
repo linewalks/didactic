@@ -28,28 +28,22 @@
      }
    ]
    ```
-1. (Optional) `$ curl localhost:5757/deployed_contracts`
-1. (Optional) `$ curl localhost:5757/network_information`
+1. `$ curl localhost:5757/network_information`
 
 # Configuration
 
-```javascript
-module.exports =  {
-  contractPath: '../build' // relative path,
+```json
+{
+  "contractPath": "../build", // relative path,
+  "host": "http://localhost",
+  "networkId": "*",
+  "port": "8544",
   // optional
-  deployedContractsHash: {
+  "deployedContractsHashes": [
     {
-      contractName: 'MetaCoin',
-      contractHash: '0xAA..',
-    },
-    ...
-  },
-  // optional
-  // For development purposes (when using ganache)
-  networkInformation: {
-    host: '127.0.0.1',
-    port: 8545,
-    networkId: '*',
-  }
+      "PatientRegistrar": "0xAA...",
+      "Provider": "0xBB..."
+    }
+  ]
 }
 ```
