@@ -3,44 +3,39 @@ const program = require("commander")
 const path = require("path")
 const fs = require("fs")
 const chalk = require("chalk")
+const isEmpty = require("lodash/isEmpty")
 const {
   getContractsFromPath,
   parseNameAndABIFromCompiledContract
 } = require("./helpers/contracts")
+const { getConfigFromExternalPath } = require("./helpers/getConfig")
 
 const router = express.Router()
 
-const defaultOptions = {
-  port: "8081",
-  contractsPath: "../build/contracts"
-}
+let config = getConfigFromExternalPath()
 
+// Parsing input from command line
 program
   .version("0.0.1")
   .option("-p, --port <n>", "Specify port", parseInt)
   .option("-c, --contractsPath <path>", "Specify path for compiled contracts")
   .parse(process.argv)
 
-const {
-  port = defaultOptions.port,
-  contractsPath = defaultOptions.contractsPath
-} = program
+const { port = config.port, contractsPath = config.contractsPath } = program
+
+config = {
+  ...config,
+  port,
+  contractsPath
+}
 
 router.get("/contracts_meta", (req, res) => {
   const listOfContracts = getContractsFromPath(contractsPath)
   res.send(parseNameAndABIFromCompiledContract(listOfContracts))
 })
 
-router.get("/deployed_contracts", (req, res) => {
-  res.send("About birds")
-})
-
 router.get("/networkInformation", (req, res) => {
-  res.send({
-    host: "localhost:3434",
-    port: "8545",
-    networkId: "*"
-  })
+  res.send(config)
 })
 
 module.exports = { router, port }
