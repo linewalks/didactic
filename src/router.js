@@ -21,6 +21,13 @@ program
   .option("-c, --contractsPath <path>", "Specify path for compiled contracts")
   .parse(process.argv)
 
+if (isEmpty(config) && (!program.port && program.contractsPath)) {
+  console.log(
+    chalk.red("Insufficient information to run didactic... terminating...")
+  )
+  process.exit(1)
+}
+
 const { port = config.port, contractsPath = config.contractsPath } = program
 
 config = {
