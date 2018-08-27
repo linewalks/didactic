@@ -28,8 +28,6 @@ const {
 
 router.get("/contracts_meta", (req, res) => {
   const listOfContracts = getContractsFromPath(contractsPath)
-  console.log(parseNameAndABIFromCompiledContract(listOfContracts))
-
   res.send(parseNameAndABIFromCompiledContract(listOfContracts))
 })
 
