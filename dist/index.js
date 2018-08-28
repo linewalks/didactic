@@ -534,7 +534,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var express = __webpack_require__(/*! express */ \"express\");\n\nvar _require = __webpack_require__(/*! ./router */ \"./src/router.js\"),\n    router = _require.router,\n    port = _require.port;\n\nmodule.exports = {\n  runServer: function runServer() {\n    var app = express();\n    app.use(router);\n    app.listen(port, function () {\n      return console.log(\"didactic running on port \".concat(port, \"!\"));\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("var express = __webpack_require__(/*! express */ \"express\");\n\nvar cors = __webpack_require__(/*! cors */ \"cors\");\n\nvar _require = __webpack_require__(/*! ./router */ \"./src/router.js\"),\n    router = _require.router,\n    port = _require.port;\n\nmodule.exports = {\n  runServer: function runServer() {\n    var app = express(); // Enable cors\n\n    app.use(cors());\n    app.use(router);\n    app.listen(port, function () {\n      return console.log(\"didactic running on port \".concat(port, \"!\"));\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -568,6 +568,17 @@ eval("module.exports = require(\"chalk\");\n\n//# sourceURL=webpack:///external_
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"commander\");\n\n//# sourceURL=webpack:///external_%22commander%22?");
+
+/***/ }),
+
+/***/ "cors":
+/*!***********************!*\
+  !*** external "cors" ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"cors\");\n\n//# sourceURL=webpack:///external_%22cors%22?");
 
 /***/ }),
 
