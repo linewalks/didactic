@@ -8,7 +8,8 @@ const getContractsFromPath = contractsPath => {
 const parseNameAndABIFromCompiledContract = pathToCompiledContracts =>
   pathToCompiledContracts.map(contractPath => ({
     name: JSON.parse(fs.readFileSync(contractPath)).contractName,
-    abi: JSON.parse(fs.readFileSync(contractPath)).abi
+    abi: JSON.parse(fs.readFileSync(contractPath)).abi,
+    bytecode: JSON.parse(fs.readFileSync(contractPath)).bytecode
   }))
 
 module.exports = {
